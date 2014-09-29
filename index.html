@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Rentbot by jramapuram</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Rentbot</h1>
+        <h2>Automatic rent management : manages bills for you &amp; your room-mates</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/jramapuram/rentbot/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/jramapuram/rentbot/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/jramapuram/rentbot" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h3>
+<a name="rentbot" class="anchor" href="#rentbot"><span class="octicon octicon-link"></span></a>Rentbot</h3>
+
+<p>Rentbot is a simple solution that tries to auto parse your email-bills and then send out en email to every romm-mate at the end of the month once.
+<strong>It is currently still in development &amp; needs a lot of improvement</strong></p>
+
+<h3>
+<a name="example-topology" class="anchor" href="#example-topology"><span class="octicon octicon-link"></span></a>Example topology</h3>
+
+<pre><code>&lt;rentbot&gt;
+
+&lt;bill name="rent" fixed="2000.0"&gt;
+    &lt;user name="John" ratio="0.55"/&gt;
+    &lt;user name="Adam" ratio="0.45" /&gt;
+&lt;/bill&gt;
+
+&lt;bill name="cox" from_email="Do_Not_Reply_Prod@cox.com"&gt;
+    &lt;user name="John" ratio="0.50"/&gt;
+    &lt;user name="Adam" ratio="0.50" /&gt;
+&lt;/bill&gt;
+
+&lt;bill name="sdge" from_email="do-not-reply@sdge.com"&gt;
+    &lt;user name="John" ratio="0.50"/&gt;
+    &lt;user name="Adam" ratio="0.50" /&gt;
+&lt;/bill&gt;
+
+
+&lt;bill name="erenterplan" from_email="support@leasingdesk.com"&gt;
+    &lt;user name="John" ratio="0.50"/&gt;
+    &lt;user name="Adam" ratio="0.50" /&gt;
+&lt;/bill&gt;
+
+&lt;/rentbot&gt;
+</code></pre>
+
+<h4>
+<a name="explanation" class="anchor" href="#explanation"><span class="octicon octicon-link"></span></a>Explanation</h4>
+
+<p>Each bill has a name &amp; either a 'fixed' tag or a 'from_email' tag. 
+  fixed: use the actual value
+  from_email: looks through emails received from this specific host &amp; try to extract the $ amount.</p>
+
+<p>Each bill also contains different people that owe money to that payment of this bill. This is called a user.
+They are simply defined by their name &amp; how much of the bill that need to pay (as a ratio)</p>
+
+<h3>
+<a name="licensing" class="anchor" href="#licensing"><span class="octicon octicon-link"></span></a>Licensing</h3>
+
+<p>Feel free to use this product at your own discrecion. No assurances are provided &amp; it is given under an MIT license. If you do use this somewhere please just list this page somewhere: <a href="http://github.com/jramapuram/rentbot">http://github.com/jramapuram/rentbot</a> (<a href="https://github.com/jramapuram" class="user-mention">@jramapuram</a>).</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
