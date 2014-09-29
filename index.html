@@ -31,8 +31,9 @@
         <h3>
 <a name="rentbot" class="anchor" href="#rentbot"><span class="octicon octicon-link"></span></a>Rentbot</h3>
 
-<p>Rentbot is a simple solution that tries to auto parse your email-bills and then send out en email to every romm-mate at the end of the month once.
-<strong>It is currently still in development &amp; needs a lot of improvement</strong></p>
+<p>Rentbot is a simple solution that tries to auto parse your email-bills and then send out en email to every romm-mate at the end of the month. </p>
+
+<p><strong>It is currently still in development &amp; needs a lot of improvement</strong></p>
 
 <h3>
 <a name="example-topology" class="anchor" href="#example-topology"><span class="octicon octicon-link"></span></a>Example topology</h3>
@@ -66,12 +67,19 @@
 <h4>
 <a name="explanation" class="anchor" href="#explanation"><span class="octicon octicon-link"></span></a>Explanation</h4>
 
-<p>Each bill has a name &amp; either a 'fixed' tag or a 'from_email' tag. 
-  fixed: use the actual value
-  from_email: looks through emails received from this specific host &amp; try to extract the $ amount.</p>
+<p>Each bill has a name &amp; either a 'fixed' tag or a 'from_email' tag. </p>
 
-<p>Each bill also contains different people that owe money to that payment of this bill. This is called a user.
+<ul>
+<li>fixed: use the actual value</li>
+<li>from_email: looks through emails received from this specific host &amp; try to extract the $ amount.</li>
+</ul><p>Each bill also contains different people that owe money to that payment of this bill. This is called a user.
 They are simply defined by their name &amp; how much of the bill that need to pay (as a ratio)</p>
+
+<h3>
+<a name="required-permissions" class="anchor" href="#required-permissions"><span class="octicon octicon-link"></span></a>Required Permissions</h3>
+
+<p>If you do not want this program to read your email then feel free to use the static portions or extend a file handler class.
+Your information is safely stored on your computer using secure AES encryption along with a bcrypt salted hash. You will require a password to enter the program, so pick an intelligent password.</p>
 
 <h3>
 <a name="licensing" class="anchor" href="#licensing"><span class="octicon octicon-link"></span></a>Licensing</h3>
