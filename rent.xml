@@ -1,0 +1,24 @@
+<rentbot>
+	
+	<bill name="rent" fixed="2000.0">
+		<user name="Jason" ratio="0.55"/>
+		<user name="Evan" ratio="0.45" />
+	</bill>
+
+	<bill name="cox" from_email="Do_Not_Reply_Prod@cox.com">
+		<user name="Jason" ratio="0.50"/>
+		<user name="Evan" ratio="0.50" />
+	</bill>
+
+	<bill name="sdge" from_email="do-not-reply@sdge.com">
+		<user name="Jason" ratio="0.50"/>
+		<user name="Evan" ratio="0.50" />
+	</bill>
+
+
+	<bill name="erenterplan" from_email="support@leasingdesk.com">
+		<user name="Jason" ratio="0.50"/>
+		<user name="Evan" ratio="0.50" />
+	</bill>
+
+</rentbot>
