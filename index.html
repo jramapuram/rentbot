@@ -82,6 +82,20 @@ They are simply defined by their name &amp; how much of the bill that need to pa
 Your information is safely stored on your computer using secure AES encryption along with a bcrypt salted hash. You will require a password to enter the program, so pick an intelligent password.</p>
 
 <h3>
+<a name="installation--usage-in-progress" class="anchor" href="#installation--usage-in-progress"><span class="octicon octicon-link"></span></a>Installation &amp; Usage [in progress]</h3>
+
+<ul>
+<li>pip install requirements.txt</li>
+<li>python main.py &amp; setup your users and emails</li>
+<li>crontab -e </li>
+</ul><p>Add the following cron lines to run this on the last day of every month:</p>
+
+<pre><code>55 23 30 4,6,9,11        * main.py
+55 23 31 1,3,5,7,8,10,12 * main.py
+55 23 28 2               * main.py
+</code></pre>
+
+<h3>
 <a name="licensing" class="anchor" href="#licensing"><span class="octicon octicon-link"></span></a>Licensing</h3>
 
 <p>Feel free to use this product at your own discrecion. No assurances are provided &amp; it is given under an MIT license. If you do use this somewhere please just list this page somewhere: <a href="http://github.com/jramapuram/rentbot">http://github.com/jramapuram/rentbot</a> (<a href="https://github.com/jramapuram" class="user-mention">@jramapuram</a>).</p>
