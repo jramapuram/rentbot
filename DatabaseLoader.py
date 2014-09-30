@@ -6,7 +6,7 @@ import leveldb
 from simplecrypt import encrypt, decrypt
 
 
-class DataBaseLoader:
+class DatabaseLoader:
 
     # helper to parse out the db
     def load_database(self, file_path, db_pwd):
@@ -22,7 +22,7 @@ class DataBaseLoader:
             print 'Error, invalid DB pwd!'
         return db_kv_set
 
-    #TODO : implement this method to save to an xml file
+    #TODO : implement a CLI parser to save to an xml file & add optional number of email logins
     # def parse_cli(self):
     #     num_bills = int(raw_input('Enter the number of bills:'))
     #     self.data_map['num_bills'] = num_bills
@@ -58,6 +58,7 @@ class DataBaseLoader:
 
         return data_map
 
-    def __init__(self, db_file_location, db_pwd):
+    def __init__(self, bill_list, db_file_location, db_pwd):
         self.db_file_location = db_file_location
+        self.bill_list = bill_list
         self.db_pwd = db_pwd
