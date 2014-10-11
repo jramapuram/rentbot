@@ -3,6 +3,7 @@ __author__ = 'jason'
 import os.path
 import bcrypt
 import leveldb
+import getpass
 import sys
 from simplecrypt import encrypt, decrypt
 
@@ -47,7 +48,7 @@ class DatabaseLoader:
                         smtp_server = ""
                         if self.dest.lower().strip() == "email":
                             smtp_server = raw_input("Enter %s\'s smtp server:" % user)
-                        current_pwd = raw_input("Enter %s\'s password :" % user)
+                        current_pwd = getpass.getpass("Enter %s\'s password :" % user)
                         data_map['%s#%s' % (current_user, imap_server)] = current_pwd  # XXX
                         data_map['%s|%s' % (current_user, smtp_server)] = current_pwd  # XXX
                     else:

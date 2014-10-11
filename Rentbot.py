@@ -3,6 +3,8 @@ __author__ = 'jason'
 import imaplib
 import re
 import sys
+import getpass
+import smtplib
 import time
 from treelib import Tree
 from os import path
@@ -78,7 +80,7 @@ def parse_emails(user_db, bill_list):
 def get_db(bill_list, dest):
     db_pwd = None
     if path.isdir(db_file_location):
-        db_pwd = raw_input("Please enter db password to continue: ")
+        db_pwd = getpass.getpass("Please enter db password to continue: ")
     dbl = DatabaseLoader(bill_list, db_file_location, db_pwd, dest)
     user_db = dbl.load()
     return user_db
