@@ -21,4 +21,6 @@
 		<user name="Evan" ratio="0.50" />
 	</bill>
 
+    <output destination="email"/>
+
 </rentbot>
