@@ -16,7 +16,6 @@ tree_location = "./rent.xml"
 
 #returns a logged in imap object with the inbox folder selected
 def login_user(user_name, imap_server, pwd):
-    print imap_server, user_name, pwd
     mail = imaplib.IMAP4_SSL(imap_server)
     mail.login(user_name, pwd)
     mail.select("inbox")
@@ -55,7 +54,7 @@ def parse_amount_email(imap_object, from_user, regex):
     result, data = imap_object.uid('search', None, '(FROM "%s" SENTSINCE "%s")' % (from_user, date_str))
 
     emails = data[0].split()
-    print 'There are %d emails in the timeframe since %s which are from = %s.' % (len(emails), date_str, from_user)
+    #print 'There are %d emails in the timeframe since %s which are from = %s.' % (len(emails), date_str, from_user)
     for email in emails:
         result, data = imap_object.uid('fetch', email, '(RFC822)')
         return re.findall(regex, data[0][-1])
@@ -70,9 +69,11 @@ def parse_emails(user_db, bill_list):
             for bill in bill_list:  # per bill
                 for node in bill.subtree(bill.root).expand_tree(mode=Tree.DEPTH):
                     if '@' in bill[node].data:
-                        value = parse_amount_email(current_user, bill[node].data, "\$\s*\d+\.\d*")
-                        print "value: ",value
-                        bill[node].data = value
+                        value_list = parse_amount_email(current_user, bill[node].data, "\$\s*(\d+\.\d*)")
+                        total_amount = 0.0
+                        for bill_amount in value_list:
+                            total_amount += float(bill_amount)
+                        bill[node].data = str(total_amount)
 
 def get_db(bill_list, dest):
     db_pwd = None
@@ -85,10 +86,9 @@ def get_db(bill_list, dest):
 def parse_payments(bill_list):
     for bill in bill_list:
         # at this point we assume that we have replaced emails with values
-        if '@' in bill[bill.root].data:
+        if bill[bill.root].data is not None and '@' in bill[bill.root].data:
             print "Error : Could not fill in data for %s bill from email %s" % (bill[bill.root].identifier, bill[bill.root].data)
-            sys.exit(-3) # XXX
-
+            sys.exit(-3)  # XXX
         amount = float(bill[bill.root].data)
 
         #multiply out our rations
