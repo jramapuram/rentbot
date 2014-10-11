@@ -1,4 +1,4 @@
 rentbot
 =======
 
-Docker based rent application
+jramapuram.github.io/rentbot/
