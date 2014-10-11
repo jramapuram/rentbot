@@ -61,6 +61,8 @@
     &lt;user name="Adam" ratio="0.50" /&gt;
 &lt;/bill&gt;
 
+    &lt;output destination="email"/&gt;
+
 &lt;/rentbot&gt;
 </code></pre>
 
@@ -72,8 +74,17 @@
 <ul>
 <li>fixed: use the actual value</li>
 <li>from_email: looks through emails received from this specific host &amp; try to extract the $ amount.</li>
-</ul><p>Each bill also contains different people that owe money to that payment of this bill. This is called a user.
+</ul>
+
+<p>Each bill also contains different people that owe money to that payment of this bill. This is called a user.
 They are simply defined by their name &amp; how much of the bill that need to pay (as a ratio)</p>
+
+<p>There is also an output tag. Destination here can take on:</p>
+
+<ul>
+<li>console: just dump to stdout</li>
+<li>email: sends out an email using smtp</li>
+</ul>
 
 <h3>
 <a name="required-permissions" class="anchor" href="#required-permissions"><span class="octicon octicon-link"></span></a>Required Permissions</h3>
@@ -88,7 +99,9 @@ Your information is safely stored on your computer using secure AES encryption a
 <li>pip install requirements.txt</li>
 <li>python main.py &amp; setup your users and emails</li>
 <li>crontab -e </li>
-</ul><p>Add the following cron lines to run this on the last day of every month:</p>
+</ul>
+
+<p>Add the following cron lines to run this on the last day of every month:</p>
 
 <pre><code>55 23 30 4,6,9,11        * main.py
 55 23 31 1,3,5,7,8,10,12 * main.py
