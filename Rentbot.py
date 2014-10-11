@@ -152,4 +152,4 @@ if __name__ == '__main__':
         print output_str
     else:
         # TODO : iterate through users
-        send_email(output_str, "jason@ramapuram.net", 587, user_db)
+        send_email(output_str, "email@email.com", 587, user_db)
