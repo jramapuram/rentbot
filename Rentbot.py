@@ -97,6 +97,20 @@ def parse_payments(bill_list):
         for node in bill.children(bill.root):
             node.data = str(float(node.data) * amount)
 
+def send_email(data_blob, to_email, port, user_db):
+     for k, v in user_db.items():
+        if '|' in k:  # XXX
+            user_data = k.split('|')
+            assert len(user_data) == 2  # eg:'name|server'
+
+            #create smtp object
+            server = smtplib.SMTP(user_data[1], port)
+            server.starttls()
+            server.login(user_data[0], v)
+
+            #now send away!
+            server.sendmail("rentbot@localhost", to_email, data_blob)
+
 if __name__ == '__main__':
     print'                       __ ___.           __'
     print'_______   ____   _____/  |\_ |__   _____/  |_'
@@ -130,8 +144,12 @@ if __name__ == '__main__':
             output_str += "{0:20} owes $ {1:7} for {2:20}".format(node.identifier, node.data, bill.root) + "\n"
             bill_totals[node.identifier] += float(node.data)
 
-    output_str += "\n\nGrand Totals:"
+    output_str += "\n\nGrand Totals:\n"
     for k,v in bill_totals.iteritems():
         output_str += k + " : " + str(v) + "\n"
 
-    print output_str
+    if dest.lower().strip() == "console":
+        print output_str
+    else:
+        # TODO : iterate through users
+        send_email(output_str, "jason@ramapuram.net", 587, user_db)
