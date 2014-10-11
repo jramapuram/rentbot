@@ -119,12 +119,19 @@ if __name__ == '__main__':
             parse_emails(user_db, bill_list)
             break
 
+    # tabulate all values
     parse_payments(bill_list)
+
+    # format our print statement
+    output_str = ""
     bill_totals = defaultdict(lambda: 0)
     for bill in bill_list:
         for node in bill.children(bill.root):
-            print "{0:20} owes $ {1:7} for {2:20}".format(node.identifier, node.data, bill.root)
+            output_str += "{0:20} owes $ {1:7} for {2:20}".format(node.identifier, node.data, bill.root) + "\n"
             bill_totals[node.identifier] += float(node.data)
 
-    print "\n\nGrand Totals:"
-    print bill_totals
+    output_str += "\n\nGrand Totals:"
+    for k,v in bill_totals.iteritems():
+        output_str += k + " : " + str(v) + "\n"
+
+    print output_str
